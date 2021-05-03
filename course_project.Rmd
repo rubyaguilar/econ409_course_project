@@ -1,0 +1,27 @@
+---
+title: "R Notebook"
+output: html_notebook
+---
+
+// https://rpubs.com/Sergio_Garcia/managing_financial_data_r
+// https://bookdown.org/kochiuyu/Technical-Analysis-with-R/downloading-data.html
+
+
+Dow Jones Industrial Stock Price Index for US
+```{r}
+library('quantmod')
+library('rvest')
+library('pbapply')
+library('Quandl')
+library('TTR')
+library('dygraphs')
+library('lubridate')
+library('tidyquant')
+library('timetk')
+
+dji <- getSymbols("DJI",src="yahoo", from = "2011-01-01", auto.assign = FALSE) #import dow jones 
+weighted_index <- getSymbols("DTWEXBGS",src="FRED", from = "20011-01-01", auto.assign = FALSE) #import trade weighted 
+
+head(weighted_index)
+
+
