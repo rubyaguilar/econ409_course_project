@@ -219,12 +219,15 @@ pre code {
 <p>Dow Jones Industrial Stock Price Index for US</p>
 <!-- rnb-text-end -->
 <!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxubGlicmFyeSgncXVhbnRtb2QnKVxubGlicmFyeSgnVFRSJylcbmxpYnJhcnkoJ2R5Z3JhcGhzJylcbmxpYnJhcnkoJ3RpZHlxdWFudCcpXG5saWJyYXJ5KCd0aW1ldGsnKVxuXG5kamkgPC0gZ2V0U3ltYm9scyhcIkRKSVwiLHNyYz1cInlhaG9vXCIsIGZyb20gPSBcIjIwMTEtMDEtMDFcIiwgYXV0by5hc3NpZ24gPSBGQUxTRSkgI2ltcG9ydCBkb3cgam9uZXMgXG53ZWlnaHRlZF9pbmRleCA8LSBnZXRTeW1ib2xzKFwiRFRXRVhCR1NcIixzcmM9XCJGUkVEXCIsIGZyb20gPSBcIjIwMDExLTAxLTAxXCIsIGF1dG8uYXNzaWduID0gRkFMU0UpICNpbXBvcnRcblxuaGVhZCh3ZWlnaHRlZF9pbmRleClcblxuYGBgIn0= -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxubGlicmFyeSgncXVhbnRtb2QnKVxubGlicmFyeSgnVFRSJylcbmxpYnJhcnkoJ2R5Z3JhcGhzJylcbmxpYnJhcnkoJ1F1YW5kbCcpXG5saWJyYXJ5KCd0aWR5cXVhbnQnKVxubGlicmFyeSgndGltZXRrJylcblxubXlkYXRhID0gUXVhbmRsKFwiRUNPTk9NSVNUL0JJR01BQ19VU0FcIilcblxuZGppIDwtIGdldFN5bWJvbHMoXCJESklcIixzcmM9XCJ5YWhvb1wiLCBmcm9tID0gXCIyMDExLTAxLTAxXCIsIGF1dG8uYXNzaWduID0gRkFMU0UpICNpbXBvcnQgZG93IGpvbmVzIFxud2VpZ2h0ZWRfaW5kZXggPC0gZ2V0U3ltYm9scyhcIkRUV0VYQkdTXCIsc3JjPVwiRlJFRFwiLCBmcm9tID0gXCIyMDAxMS0wMS0wMVwiLCBhdXRvLmFzc2lnbiA9IEZBTFNFKSAjaW1wb3J0XG5cbmhlYWQod2VpZ2h0ZWRfaW5kZXgpXG5cbmBgYCJ9 -->
 <pre class="r"><code>library(&#39;quantmod&#39;)
 library(&#39;TTR&#39;)
 library(&#39;dygraphs&#39;)
+library(&#39;Quandl&#39;)
 library(&#39;tidyquant&#39;)
 library(&#39;timetk&#39;)
+
+mydata = Quandl(&quot;ECONOMIST/BIGMAC_USA&quot;)
 
 dji &lt;- getSymbols(&quot;DJI&quot;,src=&quot;yahoo&quot;, from = &quot;2011-01-01&quot;, auto.assign = FALSE) #import dow jones 
 weighted_index &lt;- getSymbols(&quot;DTWEXBGS&quot;,src=&quot;FRED&quot;, from = &quot;20011-01-01&quot;, auto.assign = FALSE) #import
@@ -234,9 +237,92 @@ head(weighted_index)
 <!-- rnb-source-end -->
 <!-- rnb-chunk-end -->
 <!-- rnb-text-begin -->
+<p>Big Mac Index</p>
+<!-- rnb-text-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxubGlicmFyeSgncXVhbnRtb2QnKVxuYGBgIn0= -->
+<pre class="r"><code>library(&#39;quantmod&#39;)</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiTG9hZGluZyByZXF1aXJlZCBwYWNrYWdlOiB4dHNcbkxvYWRpbmcgcmVxdWlyZWQgcGFja2FnZTogem9vXG5cbkF0dGFjaGluZyBwYWNrYWdlOiDigJh6b2/igJlcblxuVGhlIGZvbGxvd2luZyBvYmplY3RzIGFyZSBtYXNrZWQgZnJvbSDigJhwYWNrYWdlOmJhc2XigJk6XG5cbiAgICBhcy5EYXRlLCBhcy5EYXRlLm51bWVyaWNcblxuTG9hZGluZyByZXF1aXJlZCBwYWNrYWdlOiBUVFJcblJlZ2lzdGVyZWQgUzMgbWV0aG9kIG92ZXJ3cml0dGVuIGJ5ICdxdWFudG1vZCc6XG4gIG1ldGhvZCAgICAgICAgICAgIGZyb21cbiAgYXMuem9vLmRhdGEuZnJhbWUgem9vIFxuIn0= -->
+<pre><code>Loading required package: xts
+Loading required package: zoo
+
+Attaching package: ‘zoo’
+
+The following objects are masked from ‘package:base’:
+
+    as.Date, as.Date.numeric
+
+Loading required package: TTR
+Registered S3 method overwritten by &#39;quantmod&#39;:
+  method            from
+  as.zoo.data.frame zoo </code></pre>
+<!-- rnb-output-end -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxubGlicmFyeSgnVFRSJylcbmxpYnJhcnkoJ2R5Z3JhcGhzJylcbmBgYCJ9 -->
+<pre class="r"><code>library(&#39;TTR&#39;)
+library(&#39;dygraphs&#39;)</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiUmVnaXN0ZXJlZCBTMyBtZXRob2Qgb3ZlcndyaXR0ZW4gYnkgJ2h0bWx3aWRnZXRzJzpcbiAgbWV0aG9kICAgICAgICAgICBmcm9tICAgICAgICAgXG4gIHByaW50Lmh0bWx3aWRnZXQgdG9vbHM6cnN0dWRpb1xuIn0= -->
+<pre><code>Registered S3 method overwritten by &#39;htmlwidgets&#39;:
+  method           from         
+  print.htmlwidget tools:rstudio</code></pre>
+<!-- rnb-output-end -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxubGlicmFyeSgnUXVhbmRsJylcbmxpYnJhcnkoJ3RpZHlxdWFudCcpXG5gYGAifQ== -->
+<pre class="r"><code>library(&#39;Quandl&#39;)
+library(&#39;tidyquant&#39;)</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiTG9hZGluZyByZXF1aXJlZCBwYWNrYWdlOiBsdWJyaWRhdGVcblxuQXR0YWNoaW5nIHBhY2thZ2U6IOKAmGx1YnJpZGF0ZeKAmVxuXG5UaGUgZm9sbG93aW5nIG9iamVjdHMgYXJlIG1hc2tlZCBmcm9tIOKAmHBhY2thZ2U6YmFzZeKAmTpcblxuICAgIGRhdGUsIGludGVyc2VjdCwgc2V0ZGlmZiwgdW5pb25cblxuTG9hZGluZyByZXF1aXJlZCBwYWNrYWdlOiBQZXJmb3JtYW5jZUFuYWx5dGljc1xuXG5BdHRhY2hpbmcgcGFja2FnZTog4oCYUGVyZm9ybWFuY2VBbmFseXRpY3PigJlcblxuVGhlIGZvbGxvd2luZyBvYmplY3QgaXMgbWFza2VkIGZyb20g4oCYcGFja2FnZTpncmFwaGljc+KAmTpcblxuICAgIGxlZ2VuZFxuXG7ilZDilZAgTmVlZCB0byBMZWFybiB0aWR5cXVhbnQ/IOKVkOKVkOKVkOKVkOKVkOKVkOKVkOKVkOKVkOKVkOKVkOKVkOKVkOKVkOKVkOKVkOKVkOKVkOKVkOKVkOKVkOKVkOKVkOKVkOKVkOKVkOKVkOKVkOKVkOKVkOKVkOKVkOKVkOKVkOKVkOKVkOKVkOKVkOKVkOKVkOKVkOKVkOKVkOKVkOKVkOKVkOKVkOKVkOKVkOKVkOKVkOKVkOKVkOKVkOKVkOKVkOKVkOKVkOKVkOKVkOKVkOKVkOKVkOKVkOKVkOKVkOKVkOKVkOKVkOKVkOKVkOKVkOKVkOKVkOKVkOKVkOKVkOKVkOKVkOKVkOKVkOKVkOKVkOKVkOKVkOKVkOKVkOKVkOKVkFxuQnVzaW5lc3MgU2NpZW5jZSBvZmZlcnMgYSAxLWhvdXIgY291cnNlIC0gTGVhcm5pbmcgTGFiICM5OiBQZXJmb3JtYW5jZSBBbmFseXNpcyAmIFBvcnRmb2xpbyBPcHRpbWl6YXRpb24gd2l0aCB0aWR5cXVhbnQhXG48XC8+IExlYXJuIG1vcmUgYXQ6IGh0dHBzOi8vdW5pdmVyc2l0eS5idXNpbmVzcy1zY2llbmNlLmlvL3AvbGVhcm5pbmctbGFicy1wcm8gPFwvPlxuIn0= -->
+<pre><code>Loading required package: lubridate
+
+Attaching package: ‘lubridate’
+
+The following objects are masked from ‘package:base’:
+
+    date, intersect, setdiff, union
+
+Loading required package: PerformanceAnalytics
+
+Attaching package: ‘PerformanceAnalytics’
+
+The following object is masked from ‘package:graphics’:
+
+    legend
+
+══ Need to Learn tidyquant? ═════════════════════════════════════════════════════════════════════════════════════════
+Business Science offers a 1-hour course - Learning Lab #9: Performance Analysis &amp; Portfolio Optimization with tidyquant!
+&lt;/&gt; Learn more at: https://university.business-science.io/p/learning-labs-pro &lt;/&gt;</code></pre>
+<!-- rnb-output-end -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxubGlicmFyeSgndGltZXRrJylcblxubXlkYXRhID0gUXVhbmRsKFwiRUNPTk9NSVNUL0JJR01BQ19VU0FcIilcbndlaWdodGVkX2luZGV4IDwtIGdldFN5bWJvbHMoXCJEVFdFWEJHU1wiLHNyYz1cIkZSRURcIiwgZnJvbSA9IFwiMjAwMTEtMDEtMDFcIiwgYXV0by5hc3NpZ24gPSBGQUxTRSkgI2ltcG9ydFxuYGBgIn0= -->
+<pre class="r"><code>library(&#39;timetk&#39;)
+
+mydata = Quandl(&quot;ECONOMIST/BIGMAC_USA&quot;)
+weighted_index &lt;- getSymbols(&quot;DTWEXBGS&quot;,src=&quot;FRED&quot;, from = &quot;20011-01-01&quot;, auto.assign = FALSE) #import</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-output-begin eyJkYXRhIjoi4oCYZ2V0U3ltYm9sc+KAmSBjdXJyZW50bHkgdXNlcyBhdXRvLmFzc2lnbj1UUlVFIGJ5IGRlZmF1bHQsIGJ1dCB3aWxsXG51c2UgYXV0by5hc3NpZ249RkFMU0UgaW4gMC41LTAuIFlvdSB3aWxsIHN0aWxsIGJlIGFibGUgdG8gdXNlXG7igJhsb2FkU3ltYm9sc+KAmSB0byBhdXRvbWF0aWNhbGx5IGxvYWQgZGF0YS4gZ2V0T3B0aW9uKFwiZ2V0U3ltYm9scy5lbnZcIilcbmFuZCBnZXRPcHRpb24oXCJnZXRTeW1ib2xzLmF1dG8uYXNzaWduXCIpIHdpbGwgc3RpbGwgYmUgY2hlY2tlZCBmb3JcbmFsdGVybmF0ZSBkZWZhdWx0cy5cblxuVGhpcyBtZXNzYWdlIGlzIHNob3duIG9uY2UgcGVyIHNlc3Npb24gYW5kIG1heSBiZSBkaXNhYmxlZCBieSBzZXR0aW5nIFxub3B0aW9ucyhcImdldFN5bWJvbHMud2FybmluZzQuMFwiPUZBTFNFKS4gU2VlID9nZXRTeW1ib2xzIGZvciBkZXRhaWxzLlxuIn0= -->
+<pre><code>‘getSymbols’ currently uses auto.assign=TRUE by default, but will
+use auto.assign=FALSE in 0.5-0. You will still be able to use
+‘loadSymbols’ to automatically load data. getOption(&quot;getSymbols.env&quot;)
+and getOption(&quot;getSymbols.auto.assign&quot;) will still be checked for
+alternate defaults.
+
+This message is shown once per session and may be disabled by setting 
+options(&quot;getSymbols.warning4.0&quot;=FALSE). See ?getSymbols for details.</code></pre>
+<!-- rnb-output-end -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxubXlkYXRhXG5gYGAifQ== -->
+<pre class="r"><code>mydata</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-frame-begin eyJtZXRhZGF0YSI6eyJjbGFzc2VzIjpbImRhdGEuZnJhbWUiXSwibnJvdyI6MzQsIm5jb2wiOjExLCJzdW1tYXJ5Ijp7IkRlc2NyaXB0aW9uIjpbImRmWywxMV0gWzM0IMOXIDExXSJdfX0sInJkZiI6Ikg0c0lBQUFBQUFBQUErMlhmMUFVWlJqSGwvc0IzQjNnQWNlbFlRZ25FQkJjRVJISXIzc2dKcXRoTWhBY1NocFlqZ1VPajd2enVFTitwSWd6bVNKbHdVeWpPWlNCNERRMFpLSEdOREszV29nSUNGSHk0dzlLUWFoSk1pSUJoYUoyNzMxM0JpNytsbkhHWitidTh6N2Y5OWwzMy9lNzcrN3NwaVNtaDRuVHhRUkI4QWtCSVNUNFFxWkpDTk5TWHd5SkpBZ0JqMG5zbUE0Unl4S215SjFwU0JpNk1GVEFRT1IrdGh3R3hJamZqeEtJWDJCVzBvamJNZjFSWGY4OXpHNUFyTVBVbzdyK2VFd1pxdXZyUmVQMUdYRXVSN3gyQWVuWHNqQ0ZpTDJmSWZiTW9McWVZemlQUWV3dVJyeHF3VFFoZHQxSDlWM3RtQ2xJdjFLTjhzN0xLTzljaC9MTHI2TzhvOTZhMnhnbVZHdkpvaUttSVYwbUNoSkpFOFZ3aWZraEUrVU5RK0pZd3ltUXMyZ1lBbm1Mck96bTFoYVF6MTQ2bWhFd0IvTGsyMjk3dGFXQTNOb3RCZyt2TmtiWkJCNWgxZ0NaVlk0RldRQjdRQ0M0dDFrUEFIY3U1NmhFNDdwVitCMlpTWjhBdHlqN0gwNFdab0ZyeWZOMWZFMHp1RzdMWUN0QjJuVlhITERuRGtnVG1OUFBmZ3ZPbzJ6VWdoT2VwOU5SVk1kUnNwV2Q4RXNndW9UcUhYdlk2QVVSbnA4amUxWlpPVGpnWElqWHgyZG5tVHdGQXJ3K2dWV1djYjZvcHBHbGowaHc4WkRzRnp5dlIvdGxUVWxnWDRoSFlSc1BoUzhWMCt5L1EvMkRJb0Y5b2YxenJXRlpRZ1I3VENkMG45SUNUUGZqYkh4RSsxV050dnhlUEdHNXg5TTZoTTM3cXBiOHAwNGFRbnd0QzhvYmU2dDJqNEgzbXhFQncyZjNnbHQ1Mmx4dGVZZGxOdGNvK2xSZFRUL3RNWDI5c3pHVkRrNHpGWHhROGd1dG1GQ1FUK3JENkZBWCs0UW41alBwelpPSEdweDlEOUFoTmMxSnc2T0xkRlQ5UEpVc2JWNHJYMkE5OWlFQVU0R2ZUODhtb2VmWFUvZzV4dW1DelI5Nk5kSmo4RXpJdWU1Qjg1Y1F2bGh3dW9jcUJPVWJWMEpiM2plQ2Qzb2wvK0FXcVdWV3JEeVNWdFZJTy9wdjBsL3M0TkZCdGErZE8xUnBSeXZNMFNNbmhCdkI2ZUpQSmV0ekx0Q1BUVFcwbmxEZW9qMWo4dy9IUnN6UmRxNU5PeGUybmFXOUhRTjcyZ2RxMXN5WENMUVBJSG9TK2FMQ1BrQVR5cU94SDNHRU5TQXVZOWV0VnZkTWlMOHRkdm16N3grSUhJK3ZKanFxSVRUMS90TGY3ZnNBK2lmS251dXFoWVJXV2ZBZjRXMEExNnRQcVI4L0ExdStWbVJuQnRYRHk3L3k2M2JRRHZEQ21jVGc5eXhkRUY3MTgvRzdjYVJxTGoySWlKcnBvQ1ZqTnpVSjhaNjBySi84TGViODlqVzdqL2g0M1J2eHVoVjQzd1JoZjZSWWQ4SDMyNlNQWUY5M1RScjRCUTYrVmJhMEV6eS9HdTlQV3R3QUN2cFk1c2NEbjRQdlNKYkpjUWNKdnU5UzQycXZjZkQ0cnJkaTVKTkU4RXlLaWJzcTZyRDg1ZEFjWVRoc0JzK21BKytZVEtIZ212L0tEWithYk5qZ2N6clA0ODU1MWVCd2ZlbXJxaUphOUEyMThPUGcwSVAzWmVYTHNZNHNwTGlYWThtS2wyUFVsbWoxYWxLYmFUQnExSndreXRGcnRhUXhreXJCZ2hNV2xoZUpPYzFnd0lvVUs4V2sxa3lhTkhvZDFtVllKM01LL3RmblJwbU4rbFY3NUVVbXlxalY2UEpXN1hVdHBYU3JEMWhxSm0xN1Zqb2l5RFZTdTRtVlh3dkNIRktqTGJVcEZCbjFlNVNjZmM3TWo3Y2ZiU1VGS3VUOWF6T0tPSWMwa2NwY0kzTUlZZjN5V0RHY2c5N0F6b1laak1kKzNRbHREcll6MmdqcnpEcjI1RGtoNm55emJsZElLSHNDYXpjS1o5eFdMR3RMMENuNTNNU0VlQ2g3U3BlbjBYRlhUcWdsc3lrdFRseVlSVnJYcUdRdXJzN0VyWVJSaTVRbXZZbms2c1JxdlpaVDBGZlYwbjgzOU9JcTFBNEFBQT09In0= -->
+<div data-pagedtable="false">
+<script data-pagedtable-source type="application/json">
+{"columns":[{"label":["Date"],"name":[1],"type":["date"],"align":["right"]},{"label":["local_price"],"name":[2],"type":["dbl"],"align":["right"]},{"label":["dollar_ex"],"name":[3],"type":["dbl"],"align":["right"]},{"label":["dollar_price"],"name":[4],"type":["dbl"],"align":["right"]},{"label":["dollar_ppp"],"name":[5],"type":["dbl"],"align":["right"]},{"label":["dollar_valuation"],"name":[6],"type":["dbl"],"align":["right"]},{"label":["dollar_adj_valuation"],"name":[7],"type":["dbl"],"align":["right"]},{"label":["euro_adj_valuation"],"name":[8],"type":["dbl"],"align":["right"]},{"label":["sterling_adj_valuation"],"name":[9],"type":["dbl"],"align":["right"]},{"label":["yen_adj_valuation"],"name":[10],"type":["dbl"],"align":["right"]},{"label":["yuan_adj_valuation"],"name":[11],"type":["dbl"],"align":["right"]}],"data":[{"1":"2021-01-31","2":"5.660000","3":"1","4":"5.660000","5":"1","6":"0","7":"0","8":"-11.200000","9":"6.100000","10":"23.600000","11":"-2.4000000"},{"1":"2020-07-31","2":"5.710000","3":"1","4":"5.710000","5":"1","6":"0","7":"0","8":"-1.900000","9":"12.200000","10":"27.900000","11":"7.0000000"},{"1":"2020-01-31","2":"5.670000","3":"1","4":"5.670000","5":"1","6":"0","7":"0","8":"2.800000","9":"9.100000","10":"31.800000","11":"9.2000000"},{"1":"2019-07-31","2":"5.740000","3":"1","4":"5.740000","5":"1","6":"0","7":"0","8":"3.600000","9":"18.300000","10":"33.300000","11":"13.4000000"},{"1":"2019-01-31","2":"5.580000","3":"1","4":"5.580000","5":"1","6":"0","7":"0","8":"-2.600000","9":"13.900000","10":"27.200000","11":"4.0000000"},{"1":"2018-07-31","2":"5.510000","3":"1","4":"5.510000","5":"1","6":"0","7":"0","8":"-4.900000","9":"9.100000","10":"30.000000","11":"3.8000000"},{"1":"2018-01-31","2":"5.280000","3":"1","4":"5.280000","5":"1","6":"0","7":"0","8":"-10.771223","9":"2.517376","10":"30.361021","11":"-0.6915305"},{"1":"2017-07-31","2":"5.300000","3":"1","4":"5.300000","5":"1","6":"0","7":"0","8":"-1.500591","9":"16.178555","10":"35.836244","11":"10.5817145"},{"1":"2017-01-31","2":"5.060000","3":"1","4":"5.060000","5":"1","6":"0","7":"0","8":"1.884503","9":"21.982096","10":"24.887719","11":"6.9246972"},{"1":"2016-07-31","2":"5.040000","3":"1","4":"5.040000","5":"1","6":"0","7":"0","8":"-1.636445","9":"15.177309","10":"17.331940","11":"9.3761625"},{"1":"2016-01-31","2":"4.930000","3":"1","4":"4.930000","5":"1","6":"0","7":"0","8":"8.182061","9":"8.172859","10":"33.632003","11":"10.4245640"},{"1":"2015-07-31","2":"4.790000","3":"1","4":"4.790000","5":"1","6":"0","7":"0","8":"4.620445","9":"-1.314986","10":"37.399053","11":"10.2761680"},{"1":"2015-01-31","2":"4.790000","3":"1","4":"4.790000","5":"1","6":"0","7":"0","8":"-1.337511","9":"-3.018615","10":"33.668355","11":"5.4421902"},{"1":"2014-07-31","2":"4.795000","3":"1","4":"4.795000","5":"1","6":"0","7":"0","8":"-15.542853","9":"-13.287725","10":"25.715368","11":"6.8244486"},{"1":"2014-01-31","2":"4.624167","3":"1","4":"4.624167","5":"1","6":"0","7":"0","8":"-14.166904","9":"-9.228972","10":"51.812610","11":"-1.1893723"},{"1":"2013-07-31","2":"4.556667","3":"1","4":"4.556667","5":"1","6":"0","7":"0","8":"-9.447528","9":"3.594663","10":"39.377081","11":"6.9126073"},{"1":"2013-01-31","2":"4.367396","3":"1","4":"4.367396","5":"1","6":"0","7":"0","8":"-17.054783","9":"-5.981093","10":"21.542474","11":"4.3518481"},{"1":"2012-07-31","2":"4.327500","3":"1","4":"4.327500","5":"1","6":"0","7":"0","8":"-9.950261","9":"-6.809969","10":"1.396524","11":"6.2828652"},{"1":"2012-01-31","2":"4.197220","3":"1","4":"4.197220","5":"1","6":"0","7":"0","8":"-14.786463","9":"-2.133618","10":"-3.485782","11":"0.3569723"},{"1":"2011-07-31","2":"4.065000","3":"1","4":"4.065000","5":"1","6":"0","7":"0","8":"-26.636587","9":"-8.015944","10":"-5.203499","11":"-3.2160148"},{"1":"2010-07-31","2":"3.733333","3":"1","4":"3.730000","5":"1","6":"0","7":"NA","8":"NA","9":"NA","10":"NA","11":"NA"},{"1":"2010-01-31","2":"3.580000","3":"1","4":"3.580000","5":"1","6":"0","7":"NA","8":"NA","9":"NA","10":"NA","11":"NA"},{"1":"2009-07-31","2":"3.570000","3":"1","4":"3.570000","5":"1","6":"0","7":"NA","8":"NA","9":"NA","10":"NA","11":"NA"},{"1":"2008-06-30","2":"3.570000","3":"1","4":"3.570000","5":"1","6":"0","7":"NA","8":"NA","9":"NA","10":"NA","11":"NA"},{"1":"2007-06-30","2":"3.410000","3":"1","4":"3.410000","5":"1","6":"0","7":"NA","8":"NA","9":"NA","10":"NA","11":"NA"},{"1":"2007-01-31","2":"3.220000","3":"1","4":"3.220000","5":"1","6":"0","7":"NA","8":"NA","9":"NA","10":"NA","11":"NA"},{"1":"2006-05-31","2":"3.100000","3":"1","4":"3.100000","5":"1","6":"0","7":"NA","8":"NA","9":"NA","10":"NA","11":"NA"},{"1":"2006-01-31","2":"3.150000","3":"1","4":"3.150000","5":"1","6":"0","7":"NA","8":"NA","9":"NA","10":"NA","11":"NA"},{"1":"2005-06-30","2":"3.060000","3":"1","4":"3.060000","5":"1","6":"0","7":"NA","8":"NA","9":"NA","10":"NA","11":"NA"},{"1":"2004-05-31","2":"2.900000","3":"1","4":"2.900000","5":"1","6":"0","7":"NA","8":"NA","9":"NA","10":"NA","11":"NA"},{"1":"2003-04-30","2":"2.710000","3":"1","4":"2.710000","5":"1","6":"0","7":"NA","8":"NA","9":"NA","10":"NA","11":"NA"},{"1":"2002-04-30","2":"2.490000","3":"1","4":"2.490000","5":"1","6":"0","7":"NA","8":"NA","9":"NA","10":"NA","11":"NA"},{"1":"2001-04-30","2":"2.540000","3":"1","4":"2.540000","5":"1","6":"0","7":"NA","8":"NA","9":"NA","10":"NA","11":"NA"},{"1":"2000-04-30","2":"2.510000","3":"1","4":"2.510000","5":"1","6":"0","7":"NA","8":"NA","9":"NA","10":"NA","11":"NA"}],"options":{"columns":{"min":{},"max":[10],"total":[11]},"rows":{"min":[10],"max":[10],"total":[34]},"pages":{}}}
+  </script>
+</div>
+<!-- rnb-frame-end -->
+<!-- rnb-chunk-end -->
+<!-- rnb-text-begin -->
 <!-- rnb-text-end -->
 
-<div id="rmd-source-code">LS0tCnRpdGxlOiAiUiBOb3RlYm9vayIKb3V0cHV0OiBodG1sX25vdGVib29rCi0tLQoKLy8gaHR0cHM6Ly9ycHVicy5jb20vU2VyZ2lvX0dhcmNpYS9tYW5hZ2luZ19maW5hbmNpYWxfZGF0YV9yCi8vIGh0dHBzOi8vYm9va2Rvd24ub3JnL2tvY2hpdXl1L1RlY2huaWNhbC1BbmFseXNpcy13aXRoLVIvZG93bmxvYWRpbmctZGF0YS5odG1sCgoKRG93IEpvbmVzIEluZHVzdHJpYWwgU3RvY2sgUHJpY2UgSW5kZXggZm9yIFVTCmBgYHtyfQpsaWJyYXJ5KCdxdWFudG1vZCcpCmxpYnJhcnkoJ1RUUicpCmxpYnJhcnkoJ2R5Z3JhcGhzJykKbGlicmFyeSgndGlkeXF1YW50JykKbGlicmFyeSgndGltZXRrJykKCmRqaSA8LSBnZXRTeW1ib2xzKCJESkkiLHNyYz0ieWFob28iLCBmcm9tID0gIjIwMTEtMDEtMDEiLCBhdXRvLmFzc2lnbiA9IEZBTFNFKSAjaW1wb3J0IGRvdyBqb25lcyAKd2VpZ2h0ZWRfaW5kZXggPC0gZ2V0U3ltYm9scygiRFRXRVhCR1MiLHNyYz0iRlJFRCIsIGZyb20gPSAiMjAwMTEtMDEtMDEiLCBhdXRvLmFzc2lnbiA9IEZBTFNFKSAjaW1wb3J0CgpoZWFkKHdlaWdodGVkX2luZGV4KQoKYGBgCgo=</div>
+<div id="rmd-source-code">LS0tCnRpdGxlOiAiUiBOb3RlYm9vayIKb3V0cHV0OiBodG1sX25vdGVib29rCi0tLQoKLy8gaHR0cHM6Ly9ycHVicy5jb20vU2VyZ2lvX0dhcmNpYS9tYW5hZ2luZ19maW5hbmNpYWxfZGF0YV9yCi8vIGh0dHBzOi8vYm9va2Rvd24ub3JnL2tvY2hpdXl1L1RlY2huaWNhbC1BbmFseXNpcy13aXRoLVIvZG93bmxvYWRpbmctZGF0YS5odG1sCgoKRG93IEpvbmVzIEluZHVzdHJpYWwgU3RvY2sgUHJpY2UgSW5kZXggZm9yIFVTCmBgYHtyfQpsaWJyYXJ5KCdxdWFudG1vZCcpCmxpYnJhcnkoJ1RUUicpCmxpYnJhcnkoJ2R5Z3JhcGhzJykKbGlicmFyeSgnUXVhbmRsJykKbGlicmFyeSgndGlkeXF1YW50JykKbGlicmFyeSgndGltZXRrJykKCm15ZGF0YSA9IFF1YW5kbCgiRUNPTk9NSVNUL0JJR01BQ19VU0EiKQoKZGppIDwtIGdldFN5bWJvbHMoIkRKSSIsc3JjPSJ5YWhvbyIsIGZyb20gPSAiMjAxMS0wMS0wMSIsIGF1dG8uYXNzaWduID0gRkFMU0UpICNpbXBvcnQgZG93IGpvbmVzIAp3ZWlnaHRlZF9pbmRleCA8LSBnZXRTeW1ib2xzKCJEVFdFWEJHUyIsc3JjPSJGUkVEIiwgZnJvbSA9ICIyMDAxMS0wMS0wMSIsIGF1dG8uYXNzaWduID0gRkFMU0UpICNpbXBvcnQKCmhlYWQod2VpZ2h0ZWRfaW5kZXgpCgpgYGAKCgpCaWcgTWFjIEluZGV4IApgYGB7cn0KbGlicmFyeSgncXVhbnRtb2QnKQpsaWJyYXJ5KCdUVFInKQpsaWJyYXJ5KCdkeWdyYXBocycpCmxpYnJhcnkoJ1F1YW5kbCcpCmxpYnJhcnkoJ3RpZHlxdWFudCcpCmxpYnJhcnkoJ3RpbWV0aycpCgpteWRhdGEgPSBRdWFuZGwoIkVDT05PTUlTVC9CSUdNQUNfVVNBIikKd2VpZ2h0ZWRfaW5kZXggPC0gZ2V0U3ltYm9scygiRFRXRVhCR1MiLHNyYz0iRlJFRCIsIGZyb20gPSAiMjAwMTEtMDEtMDEiLCBhdXRvLmFzc2lnbiA9IEZBTFNFKSAjaW1wb3J0CgpteWRhdGEgCmBgYAoK</div>
 
 
 

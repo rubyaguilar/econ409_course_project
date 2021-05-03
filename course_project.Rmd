@@ -12,13 +12,32 @@ Dow Jones Industrial Stock Price Index for US
 library('quantmod')
 library('TTR')
 library('dygraphs')
+library('Quandl')
 library('tidyquant')
 library('timetk')
+
+mydata = Quandl("ECONOMIST/BIGMAC_USA")
 
 dji <- getSymbols("DJI",src="yahoo", from = "2011-01-01", auto.assign = FALSE) #import dow jones 
 weighted_index <- getSymbols("DTWEXBGS",src="FRED", from = "20011-01-01", auto.assign = FALSE) #import
 
 head(weighted_index)
 
+```
+
+
+Big Mac Index 
+```{r}
+library('quantmod')
+library('TTR')
+library('dygraphs')
+library('Quandl')
+library('tidyquant')
+library('timetk')
+
+mydata = Quandl("ECONOMIST/BIGMAC_USA")
+weighted_index <- getSymbols("DTWEXBGS",src="FRED", from = "20011-01-01", auto.assign = FALSE) #import
+
+mydata 
 ```
 
