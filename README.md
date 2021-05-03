@@ -3,4 +3,4 @@
 All dependencies can be download with function below: 
 
 
-` install.packages('') ` 
+` install.packages('quantmod', 'rvest','pbapply', 'TTR', 'dygraphs', 'lubridate', 'tidyquant', 'timetk') ` 
