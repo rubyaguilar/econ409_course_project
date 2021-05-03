@@ -219,26 +219,24 @@ pre code {
 <p>Dow Jones Industrial Stock Price Index for US</p>
 <!-- rnb-text-end -->
 <!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxubGlicmFyeSgncXVhbnRtb2QnKVxubGlicmFyeSgncnZlc3QnKVxubGlicmFyeSgncGJhcHBseScpXG5saWJyYXJ5KCdRdWFuZGwnKVxubGlicmFyeSgnVFRSJylcbmxpYnJhcnkoJ2R5Z3JhcGhzJylcbmxpYnJhcnkoJ2x1YnJpZGF0ZScpXG5saWJyYXJ5KCd0aWR5cXVhbnQnKVxubGlicmFyeSgndGltZXRrJylcblxuZGppIDwtIGdldFN5bWJvbHMoXCJESklcIixzcmM9XCJ5YWhvb1wiLCBmcm9tID0gXCIyMDExLTAxLTAxXCIsIGF1dG8uYXNzaWduID0gRkFMU0UpICNpbXBvcnQgZG93IGpvbmVzIFxud2VpZ2h0ZWRfaW5kZXggPC0gZ2V0U3ltYm9scyhcIkRUV0VYQkdTXCIsc3JjPVwiRlJFRFwiLCBmcm9tID0gXCIyMDAxMS0wMS0wMVwiLCBhdXRvLmFzc2lnbiA9IEZBTFNFKSAjaW1wb3J0IHRyYWRlIHdlaWdodGVkIFxuXG5oZWFkKHdlaWdodGVkX2luZGV4KVxuXG5cbmBgYCJ9 -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxubGlicmFyeSgncXVhbnRtb2QnKVxubGlicmFyeSgnVFRSJylcbmxpYnJhcnkoJ2R5Z3JhcGhzJylcbmxpYnJhcnkoJ3RpZHlxdWFudCcpXG5saWJyYXJ5KCd0aW1ldGsnKVxuXG5kamkgPC0gZ2V0U3ltYm9scyhcIkRKSVwiLHNyYz1cInlhaG9vXCIsIGZyb20gPSBcIjIwMTEtMDEtMDFcIiwgYXV0by5hc3NpZ24gPSBGQUxTRSkgI2ltcG9ydCBkb3cgam9uZXMgXG53ZWlnaHRlZF9pbmRleCA8LSBnZXRTeW1ib2xzKFwiRFRXRVhCR1NcIixzcmM9XCJGUkVEXCIsIGZyb20gPSBcIjIwMDExLTAxLTAxXCIsIGF1dG8uYXNzaWduID0gRkFMU0UpICNpbXBvcnRcblxuaGVhZCh3ZWlnaHRlZF9pbmRleClcblxuYGBgIn0= -->
 <pre class="r"><code>library(&#39;quantmod&#39;)
-library(&#39;rvest&#39;)
-library(&#39;pbapply&#39;)
-library(&#39;Quandl&#39;)
 library(&#39;TTR&#39;)
 library(&#39;dygraphs&#39;)
-library(&#39;lubridate&#39;)
 library(&#39;tidyquant&#39;)
 library(&#39;timetk&#39;)
 
 dji &lt;- getSymbols(&quot;DJI&quot;,src=&quot;yahoo&quot;, from = &quot;2011-01-01&quot;, auto.assign = FALSE) #import dow jones 
-weighted_index &lt;- getSymbols(&quot;DTWEXBGS&quot;,src=&quot;FRED&quot;, from = &quot;20011-01-01&quot;, auto.assign = FALSE) #import trade weighted 
+weighted_index &lt;- getSymbols(&quot;DTWEXBGS&quot;,src=&quot;FRED&quot;, from = &quot;20011-01-01&quot;, auto.assign = FALSE) #import
 
 head(weighted_index)
 </code></pre>
 <!-- rnb-source-end -->
 <!-- rnb-chunk-end -->
+<!-- rnb-text-begin -->
+<!-- rnb-text-end -->
 
-<div id="rmd-source-code">LS0tCnRpdGxlOiAiUiBOb3RlYm9vayIKb3V0cHV0OiBodG1sX25vdGVib29rCi0tLQoKLy8gaHR0cHM6Ly9ycHVicy5jb20vU2VyZ2lvX0dhcmNpYS9tYW5hZ2luZ19maW5hbmNpYWxfZGF0YV9yCi8vIGh0dHBzOi8vYm9va2Rvd24ub3JnL2tvY2hpdXl1L1RlY2huaWNhbC1BbmFseXNpcy13aXRoLVIvZG93bmxvYWRpbmctZGF0YS5odG1sCgoKRG93IEpvbmVzIEluZHVzdHJpYWwgU3RvY2sgUHJpY2UgSW5kZXggZm9yIFVTCmBgYHtyfQpsaWJyYXJ5KCdxdWFudG1vZCcpCmxpYnJhcnkoJ3J2ZXN0JykKbGlicmFyeSgncGJhcHBseScpCmxpYnJhcnkoJ1F1YW5kbCcpCmxpYnJhcnkoJ1RUUicpCmxpYnJhcnkoJ2R5Z3JhcGhzJykKbGlicmFyeSgnbHVicmlkYXRlJykKbGlicmFyeSgndGlkeXF1YW50JykKbGlicmFyeSgndGltZXRrJykKCmRqaSA8LSBnZXRTeW1ib2xzKCJESkkiLHNyYz0ieWFob28iLCBmcm9tID0gIjIwMTEtMDEtMDEiLCBhdXRvLmFzc2lnbiA9IEZBTFNFKSAjaW1wb3J0IGRvdyBqb25lcyAKd2VpZ2h0ZWRfaW5kZXggPC0gZ2V0U3ltYm9scygiRFRXRVhCR1MiLHNyYz0iRlJFRCIsIGZyb20gPSAiMjAwMTEtMDEtMDEiLCBhdXRvLmFzc2lnbiA9IEZBTFNFKSAjaW1wb3J0IHRyYWRlIHdlaWdodGVkIAoKaGVhZCh3ZWlnaHRlZF9pbmRleCkKCgo=</div>
+<div id="rmd-source-code">LS0tCnRpdGxlOiAiUiBOb3RlYm9vayIKb3V0cHV0OiBodG1sX25vdGVib29rCi0tLQoKLy8gaHR0cHM6Ly9ycHVicy5jb20vU2VyZ2lvX0dhcmNpYS9tYW5hZ2luZ19maW5hbmNpYWxfZGF0YV9yCi8vIGh0dHBzOi8vYm9va2Rvd24ub3JnL2tvY2hpdXl1L1RlY2huaWNhbC1BbmFseXNpcy13aXRoLVIvZG93bmxvYWRpbmctZGF0YS5odG1sCgoKRG93IEpvbmVzIEluZHVzdHJpYWwgU3RvY2sgUHJpY2UgSW5kZXggZm9yIFVTCmBgYHtyfQpsaWJyYXJ5KCdxdWFudG1vZCcpCmxpYnJhcnkoJ1RUUicpCmxpYnJhcnkoJ2R5Z3JhcGhzJykKbGlicmFyeSgndGlkeXF1YW50JykKbGlicmFyeSgndGltZXRrJykKCmRqaSA8LSBnZXRTeW1ib2xzKCJESkkiLHNyYz0ieWFob28iLCBmcm9tID0gIjIwMTEtMDEtMDEiLCBhdXRvLmFzc2lnbiA9IEZBTFNFKSAjaW1wb3J0IGRvdyBqb25lcyAKd2VpZ2h0ZWRfaW5kZXggPC0gZ2V0U3ltYm9scygiRFRXRVhCR1MiLHNyYz0iRlJFRCIsIGZyb20gPSAiMjAwMTEtMDEtMDEiLCBhdXRvLmFzc2lnbiA9IEZBTFNFKSAjaW1wb3J0CgpoZWFkKHdlaWdodGVkX2luZGV4KQoKYGBgCgo=</div>
 
 
 
