@@ -1,0 +1,129 @@
+---
+title: "409Final"
+author: "Rohan Thakker"
+date: "5/2/2021"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library('quantmod')
+library('rvest')
+library('pbapply')
+library('Quandl')
+library('TTR')
+library('dygraphs')
+library('lubridate')
+library('ggplot2')
+```
+
+
+
+```{r}
+dji <- getSymbols("DJI",src="yahoo", from = "2011-01-01", auto.assign = FALSE) 
+dindex <- getSymbols("DTWEXBGS",src="FRED", from = "2011-01-01", auto.assign = FALSE) #import trade 
+dji = data.frame(dji)
+dji$date = rownames(dji)
+dindex = data.frame(dindex)
+dindex$date = rownames(dindex)
+dindex$date = rownames(dindex)
+dindex = dindex[dindex$date > "2011-01-01",]
+mergedIndexes = merge(dindex,dji,by="date")
+origMerged = mergedIndexes
+djimod = lm(mergedIndexes$DJI.Open ~ mergedIndexes$DTWEXBGS)
+summary(djimod)
+mergedIndexes$date = as.Date(mergedIndexes$date)
+plot(mergedIndexes$DTWEXBGS,mergedIndexes$DJI.Open, xlab="US Dollar Index", ylab ="Dow Jones Industrial Average", main = "US Dollar Index vs Dow Jones")
+abline(djimod, col="red")
+```
+
+```{r}
+vigax <- getSymbols("VIGAX",src="yahoo", from = "2011-01-01", auto.assign = FALSE) 
+vigax = data.frame(vigax)
+vigax$date = rownames(vigax)
+vigax = head(vigax,2599)
+mergedIndexes$vigax = vigax$VIGAX.Open
+vigaxmod = lm(mergedIndexes$vigax ~ mergedIndexes$DTWEXBGS, na.action = na.omit)
+summary(vigaxmod)
+plot(mergedIndexes$DTWEXBGS,mergedIndexes$vigax, xlab="US Dollar Index", ylab ="VIGAX", main = "US Dollar Index vs VIGAX")
+abline(vigaxmod, col="red")
+```
+```{r}
+vfaix <- getSymbols("VFAIX",src="yahoo", from = "2011-01-01", auto.assign = FALSE) 
+vfaix = data.frame(vfaix)
+vfaix$date = rownames(vfaix)
+vfaix = head(vfaix,2599)
+mergedIndexes$vfaix = vfaix$VFAIX.Open
+vfaixmod = lm(mergedIndexes$vfaix ~mergedIndexes$DTWEXBGS, na.action = na.omit)
+summary(vfaixmod)
+plot(mergedIndexes$DTWEXBGS,mergedIndexes$vfaix)
+abline(vfaixmod, col="blue")
+```
+
+```{r}
+vcdax <- getSymbols("VCDAX",src="yahoo", from = "2011-01-01", auto.assign = FALSE) 
+vcdax = data.frame(vcdax)
+vcdax$date = rownames(vcdax)
+vcdax = head(vcdax,2599)
+mergedIndexes$vcdax = vcdax$VCDAX.Open
+vcdaxmod = lm(mergedIndexes$vcdax ~ mergedIndexes$DTWEXBGS, na.action = na.omit)
+summary(vcdaxmod)
+plot(mergedIndexes$DTWEXBGS,mergedIndexes$vcdax)
+abline(vcdaxmod, col="blue")
+```
+
+```{r}
+mergedIndexes = origMerged
+vcsax <- getSymbols("VCSAX",src="yahoo", from = "2011-01-01", auto.assign = FALSE) 
+vcsax = data.frame(vcsax)
+vcsax$date = rownames(vcsax)
+vcsax = head(vcsax,2599)
+mergedIndexes$vcsax = vcsax$VCSAX.Open
+vcsaxmod = lm(mergedIndexes$vcsax ~ log(mergedIndexes$DTWEXBGS), na.action = na.omit)
+summary(vcsaxmod)
+plot(mergedIndexes$DTWEXBGS,mergedIndexes$vcsax, xlab="US Dollar Index", ylab="VCSAX",main="US Dollar Index vs. VCSAX")
+lines(mergedIndexes$DTWEXBGS,predict(vcsaxmod),col="blue")
+
+```
+
+```{r}
+mergedIndexes = origMerged
+fiuix <- getSymbols("FIUIX",src="yahoo", from = "2011-01-01", auto.assign = FALSE) 
+fiuix = data.frame(fiuix)
+fiuix$date = rownames(fiuix)
+fiuix = head(fiuix,2599)
+mergedIndexes$fiuix = fiuix$FIUIX.Open
+mergedIndexes = na.omit(mergedIndexes)
+fiuixmod = lm(mergedIndexes$fiuix ~ poly(mergedIndexes$DTWEXBGS, degree=2))
+summary(fiuixmod)
+plot(mergedIndexes$DTWEXBGS,mergedIndexes$fiuix, xlab="US Dollar Index", ylab="Utiltilies Index", main ="US Dollar Index vs. Utilities Index")
+lines(mergedIndexes$DTWEXBGS, fitted(fiuixmod),col="red")
+```
+
+```{r}
+mergedIndexes = origMerged
+vghcx <- getSymbols("VGHCX",src="yahoo", from = "2011-01-01", auto.assign = FALSE) 
+vghcx = data.frame(vghcx)
+vghcx$date = rownames(vghcx)
+vghcx = head(vghcx,2599)
+mergedIndexes$vghcx = vghcx$VGHCX.Open
+mergedIndexes = na.omit(mergedIndexes)
+vghcxmod = lm(mergedIndexes$vghcx ~ poly(mergedIndexes$DTWEXBGS, degree = 2))
+summary(vghcxmod)
+plot(mergedIndexes$DTWEXBGS,mergedIndexes$vghcx, xlab = "US Dollar Index", ylab = "Healthcare Industry Index", main ="US Dollar Index vs. Healthcare Index")
+lines(mergedIndexes$DTWEXBGS, fitted(vghcxmod),col="red")
+```
+
+```{r}
+mergedIndexes = origMerged
+SGIDX <- getSymbols("SGIDX",src="yahoo", from = "2011-01-01", auto.assign = FALSE) 
+SGIDX = data.frame(SGIDX)
+SGIDX$date = rownames(SGIDX)
+SGIDX = head(SGIDX,2599)
+mergedIndexes$SGIDX = SGIDX$SGIDX.Open
+mergedIndexes = na.omit(mergedIndexes)
+SGIDXmod = lm(mergedIndexes$SGIDX ~ poly(mergedIndexes$DTWEXBGS, degree = 2))
+summary(SGIDXmod)
+plot(mergedIndexes$DTWEXBGS,mergedIndexes$SGIDX, xlab = "US Dollar Index", ylab = "Commodities Industry Index", main ="US Dollar Index vs. Commodities Index")
+lines(mergedIndexes$DTWEXBGS, fitted(SGIDXmod),col="red")
+```
